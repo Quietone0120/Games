@@ -4,21 +4,26 @@ import 'package:flame_audio/flame_audio.dart';
 ///
 /// BGM  → ар дэвсгэр хөгжим (давтагдан тоглоно)
 /// SFX  → нэг удаагийн дуу авиа
+///
+/// Web platform: autoplay policy-г зохицуулна.
+/// Аль нэг SFX эсвэл товч дарсны дараа BGM эхэлнэ.
 class AudioService {
   AudioService._();
 
   static bool sfxEnabled   = true;
   static bool musicEnabled = true;
 
-  static double _musicVol = 0.45;
-  static double _sfxVol   = 0.80;
+  static double _musicVol = 0.50;
+  static double _sfxVol   = 0.85;
 
+  static String? _pendingBgm;   // Web autoplay-г хүлээж буй BGM
   static String? _currentBgm;
+  static bool _userInteracted = false;
 
-  // ── Файлын нэрс ─────────────────────────────────────────────
-  static const String bgmFlappy   = 'bgm_flappy.mp3';
-  static const String bgmTetris   = 'bgm_tetris.mp3';
-  static const String bgmTank     = 'bgm_tank.mp3';
+  // ── Файлын нэрс (WAV — бүх platform дэмжинэ) ────────────────
+  static const String bgmFlappy   = 'bgm_flappy.wav';
+  static const String bgmTetris   = 'bgm_tetris.wav';
+  static const String bgmTank     = 'bgm_tank.wav';
 
   static const String sfxClick    = 'sfx_click.wav';
   // Flappy Bird
@@ -42,16 +47,23 @@ class AudioService {
   }
 
   // ── BGM ─────────────────────────────────────────────────────
+  /// BGM тоглох. Web дээр хэрэглэгч харилцаагүй бол хадгалж,
+  /// эхний SFX дарсны дараа автоматаар эхэлнэ.
   static Future<void> playBgm(String file) async {
     if (!musicEnabled) return;
     if (_currentBgm == file) return;
+    _pendingBgm = file;
+    if (!_userInteracted) return; // Web autoplay хязгаарлалт
+    await _startBgm(file);
+  }
+
+  static Future<void> _startBgm(String file) async {
     try {
       await FlameAudio.bgm.stop();
       await FlameAudio.bgm.play(file, volume: _musicVol);
       _currentBgm = file;
-    } catch (e) {
-      // Файл байхгүй бол тоглохгүй, алдаа гаргахгүй
-    }
+      _pendingBgm = null;
+    } catch (_) {}
   }
 
   static Future<void> stopBgm() async {
@@ -73,6 +85,15 @@ class AudioService {
   // ── SFX ─────────────────────────────────────────────────────
   static Future<void> playSfx(String file) async {
     if (!sfxEnabled) return;
+
+    // Эхний хэрэглэгчийн харилцаа → pending BGM эхлүүлнэ
+    if (!_userInteracted) {
+      _userInteracted = true;
+      if (_pendingBgm != null && musicEnabled) {
+        await _startBgm(_pendingBgm!);
+      }
+    }
+
     try {
       await FlameAudio.play(file, volume: _sfxVol);
     } catch (_) {}
@@ -89,7 +110,11 @@ class AudioService {
 
   static void toggleMusic() {
     musicEnabled = !musicEnabled;
-    if (!musicEnabled) stopBgm();
+    if (!musicEnabled) {
+      stopBgm();
+    } else if (_pendingBgm != null && _userInteracted) {
+      _startBgm(_pendingBgm!);
+    }
   }
 
   static void toggleSfx() {
