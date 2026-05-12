@@ -23,7 +23,7 @@ class TankMainMenu extends StatefulWidget {
   State<TankMainMenu> createState() => _MainMenuState();
 }
 
-class _MainMenuState extends State<TankMainMenu> {
+class _MainMenuState extends State<TankMainMenu> with TickerProviderStateMixin {
   final List<Color> tankColors = [
     Colors.greenAccent,
     Colors.blueAccent,
@@ -31,6 +31,60 @@ class _MainMenuState extends State<TankMainMenu> {
     Colors.redAccent,
     Colors.yellowAccent,
   ];
+
+  late AnimationController _titleCtrl;
+  late AnimationController _btnCtrl;
+  late AnimationController _tankCtrl;
+  late AnimationController _slideCtrl;
+
+  late Animation<double> _titleGlow;
+  late Animation<double> _titleScale;
+  late Animation<double> _btnPulse;
+  late Animation<double> _tankFloat;
+  late Animation<double> _slideAnim;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _titleCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1400),
+    )..repeat(reverse: true);
+    _titleGlow = Tween<double>(begin: 4.0, end: 22.0)
+        .animate(CurvedAnimation(parent: _titleCtrl, curve: Curves.easeInOut));
+    _titleScale = Tween<double>(begin: 0.97, end: 1.03)
+        .animate(CurvedAnimation(parent: _titleCtrl, curve: Curves.easeInOut));
+
+    _btnCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 900),
+    )..repeat(reverse: true);
+    _btnPulse = Tween<double>(begin: 0.95, end: 1.06)
+        .animate(CurvedAnimation(parent: _btnCtrl, curve: Curves.easeInOut));
+
+    _tankCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1100),
+    )..repeat(reverse: true);
+    _tankFloat = Tween<double>(begin: -8.0, end: 8.0)
+        .animate(CurvedAnimation(parent: _tankCtrl, curve: Curves.easeInOut));
+
+    _slideCtrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 700),
+    )..forward();
+    _slideAnim = CurvedAnimation(parent: _slideCtrl, curve: Curves.easeOutBack);
+  }
+
+  @override
+  void dispose() {
+    _titleCtrl.dispose();
+    _btnCtrl.dispose();
+    _tankCtrl.dispose();
+    _slideCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,101 +98,176 @@ class _MainMenuState extends State<TankMainMenu> {
       backgroundColor: const Color(0xFF121212),
       body: Row(
         children: [
+          // MISSIONS panel
           Expanded(
             flex: 2,
-            child: Container(
-              color: Colors.black26,
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(20),
-                    child: Text(
-                      "MISSIONS",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.amber,
+            child: AnimatedBuilder(
+              animation: _slideAnim,
+              builder: (_, child) => Transform.translate(
+                offset: Offset((1 - _slideAnim.value) * -80, 0),
+                child: Opacity(opacity: _slideAnim.value, child: child),
+              ),
+              child: Container(
+                color: Colors.black26,
+                child: Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        "MISSIONS",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber,
+                          letterSpacing: 2,
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: 3,
-                      itemBuilder: (context, i) => _mapTile(i),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: 3,
+                        itemBuilder: (context, i) => _mapTile(i),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
+
+          // CENTER panel
           Expanded(
             flex: 3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  "TANK WAR",
-                  style: TextStyle(
-                    fontSize: 60,
-                    fontWeight: FontWeight.w900,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-                const SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: () {
-                    GameProgress.playerLives.value = 3;
-                    GameProgress.enemiesLeft.value = 5;
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const GamePlayPage(),
+                // Glowing pulsing title
+                AnimatedBuilder(
+                  animation: _titleCtrl,
+                  builder: (_, __) => Transform.scale(
+                    scale: _titleScale.value,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.amber.withOpacity(0.4),
+                            blurRadius: _titleGlow.value,
+                            spreadRadius: 1,
+                          ),
+                        ],
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 50,
-                      vertical: 20,
+                      child: const Text(
+                        "TANK WAR",
+                        style: TextStyle(
+                          fontSize: 60,
+                          fontWeight: FontWeight.w900,
+                          fontStyle: FontStyle.italic,
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              color: Colors.amber,
+                              blurRadius: 12,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                  child: const Text(
-                    "START GAME",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                ),
+
+                const SizedBox(height: 40),
+
+                // Pulsing START GAME button
+                AnimatedBuilder(
+                  animation: _btnCtrl,
+                  builder: (_, child) => Transform.scale(
+                    scale: _btnPulse.value,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.amber.withOpacity(0.5),
+                            blurRadius: 16 * _btnPulse.value,
+                            spreadRadius: 2,
+                          ),
+                        ],
+                      ),
+                      child: child,
+                    ),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      GameProgress.playerLives.value = 3;
+                      GameProgress.enemiesLeft.value = 5;
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (_, anim, __) => const GamePlayPage(),
+                          transitionsBuilder: (_, anim, __, child) =>
+                              FadeTransition(opacity: anim, child: child),
+                          transitionDuration: const Duration(milliseconds: 400),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.amber,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 50,
+                        vertical: 20,
+                      ),
+                    ),
+                    child: const Text(
+                      "START GAME",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        letterSpacing: 1.5,
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
           ),
+
+          // GARAGE panel
           Expanded(
             flex: 2,
-            child: Container(
-              color: Colors.black26,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "GARAGE",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.cyan,
+            child: AnimatedBuilder(
+              animation: _slideAnim,
+              builder: (_, child) => Transform.translate(
+                offset: Offset((1 - _slideAnim.value) * 80, 0),
+                child: Opacity(opacity: _slideAnim.value, child: child),
+              ),
+              child: Container(
+                color: Colors.black26,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "GARAGE",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.cyan,
+                        letterSpacing: 2,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  _tankIcon(),
-                  const SizedBox(height: 20),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    alignment: WrapAlignment.center,
-                    children: tankColors.map((c) => _colorBtn(c)).toList(),
-                  ),
-                ],
+                    const SizedBox(height: 20),
+                    _animatedTankIcon(),
+                    const SizedBox(height: 20),
+                    Wrap(
+                      spacing: 10,
+                      runSpacing: 10,
+                      alignment: WrapAlignment.center,
+                      children: tankColors.asMap().entries.map((e) =>
+                          _colorBtn(e.value, e.key)).toList(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -149,53 +278,99 @@ class _MainMenuState extends State<TankMainMenu> {
 
   Widget _mapTile(int i) {
     bool sel = GameProgress.currentMapIndex == i;
-    return ListTile(
-      selected: sel,
-      onTap: () => setState(() => GameProgress.currentMapIndex = i),
-      title: Text(
-        "MAP 0${i + 1}",
-        style: TextStyle(color: sel ? Colors.amber : Colors.white),
+    return AnimatedBuilder(
+      animation: _slideAnim,
+      builder: (_, child) {
+        final delay = (i * 0.15).clamp(0.0, 0.5);
+        final t = ((_slideAnim.value - delay) / (1 - delay)).clamp(0.0, 1.0);
+        return Transform.translate(
+          offset: Offset((1 - t) * -40, 0),
+          child: Opacity(opacity: t, child: child),
+        );
+      },
+      child: ListTile(
+        selected: sel,
+        onTap: () => setState(() => GameProgress.currentMapIndex = i),
+        selectedTileColor: Colors.amber.withOpacity(0.1),
+        title: Text(
+          "MAP 0${i + 1}",
+          style: TextStyle(
+            color: sel ? Colors.amber : Colors.white,
+            fontWeight: sel ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+        subtitle: Row(
+          children: List.generate(
+            3,
+            (index) => Icon(
+              Icons.star,
+              size: 16,
+              color: index < GameProgress.mapStars[i]!
+                  ? Colors.amber
+                  : Colors.grey,
+            ),
+          ),
+        ),
+        leading: Icon(Icons.map, color: sel ? Colors.amber : Colors.white24),
       ),
-      subtitle: Row(
-        children: List.generate(
-          3,
-          (index) => Icon(
-            Icons.star,
-            size: 16,
-            color: index < GameProgress.mapStars[i]!
-                ? Colors.amber
-                : Colors.grey,
+    );
+  }
+
+  Widget _animatedTankIcon() {
+    return AnimatedBuilder(
+      animation: _tankCtrl,
+      builder: (_, __) => Transform.translate(
+        offset: Offset(0, _tankFloat.value),
+        child: Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            color: GameProgress.selectedColor,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.white, width: 2),
+            boxShadow: [
+              BoxShadow(
+                color: GameProgress.selectedColor.withOpacity(0.5),
+                blurRadius: 16,
+                spreadRadius: 2,
+              ),
+            ],
+          ),
+          child: const Center(
+            child: Icon(Icons.shield, size: 50, color: Colors.black38),
           ),
         ),
       ),
-      leading: Icon(Icons.map, color: sel ? Colors.amber : Colors.white24),
     );
   }
 
-  Widget _tankIcon() {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: GameProgress.selectedColor,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.white, width: 2),
-      ),
-      child: const Center(
-        child: Icon(Icons.shield, size: 50, color: Colors.black38),
-      ),
-    );
-  }
-
-  Widget _colorBtn(Color c) {
-    return GestureDetector(
-      onTap: () => setState(() => GameProgress.selectedColor = c),
-      child: CircleAvatar(
-        backgroundColor: c,
-        radius: 20,
-        child: GameProgress.selectedColor == c
-            ? const Icon(Icons.check, color: Colors.black)
-            : null,
+  Widget _colorBtn(Color c, int idx) {
+    final isSelected = GameProgress.selectedColor == c;
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.0, end: 1.0),
+      duration: Duration(milliseconds: 400 + idx * 80),
+      curve: Curves.easeOutBack,
+      builder: (_, val, child) => Transform.scale(scale: val, child: child),
+      child: GestureDetector(
+        onTap: () => setState(() => GameProgress.selectedColor = c),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: isSelected ? 44 : 38,
+          height: isSelected ? 44 : 38,
+          decoration: BoxDecoration(
+            color: c,
+            shape: BoxShape.circle,
+            boxShadow: isSelected
+                ? [BoxShadow(color: c.withOpacity(0.7), blurRadius: 12, spreadRadius: 2)]
+                : [],
+            border: isSelected
+                ? Border.all(color: Colors.white, width: 2.5)
+                : null,
+          ),
+          child: isSelected
+              ? const Icon(Icons.check, color: Colors.black, size: 20)
+              : null,
+        ),
       ),
     );
   }
