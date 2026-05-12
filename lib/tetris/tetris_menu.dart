@@ -96,7 +96,9 @@ class _FallingBlock {
 // ─── Background painter ───────────────────────────────────────────────────────
 class _BlocksPainter extends CustomPainter {
   final List<_FallingBlock> blocks;
-  _BlocksPainter(this.blocks);
+  final double screenW;
+  final double screenH;
+  _BlocksPainter(this.blocks, this.screenW, this.screenH);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -190,10 +192,13 @@ class _ArcadeHomeMenuState extends State<ArcadeHomeMenu>
     for (int i = 0; i < 20; i++) _spawnBlock(randomY: true);
   }
 
+  double _screenW = 400;
+  double _screenH = 800;
+
   void _spawnBlock({bool randomY = false}) {
     _blocks.add(_FallingBlock(
-      x: _rng.nextDouble() * 400,
-      y: randomY ? _rng.nextDouble() * 800 : -30,
+      x: _rng.nextDouble() * _screenW,
+      y: randomY ? _rng.nextDouble() * _screenH : -30,
       speed: 0.5 + _rng.nextDouble() * 1.2,
       size: 14 + _rng.nextDouble() * 18,
       color: _tetrColors[_rng.nextInt(_tetrColors.length)],
@@ -207,7 +212,7 @@ class _ArcadeHomeMenuState extends State<ArcadeHomeMenu>
       for (final b in _blocks) {
         b.y += b.speed;
       }
-      _blocks.removeWhere((b) => b.y > 900);
+      _blocks.removeWhere((b) => b.y > _screenH + 30);
       while (_blocks.length < 20) {
         _spawnBlock();
       }
@@ -227,40 +232,55 @@ class _ArcadeHomeMenuState extends State<ArcadeHomeMenu>
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        final w = constraints.maxWidth;
+        final h = constraints.maxHeight;
+        _screenW = w;
+        _screenH = h;
+
         return Stack(
           children: [
-            // Animated falling blocks background
+            // Animated falling blocks background — дэлгэцийн бодит хэмжээ
             CustomPaint(
-              size: Size(constraints.maxWidth, constraints.maxHeight),
-              painter: _BlocksPainter(_blocks),
+              size: Size(w, h),
+              painter: _BlocksPainter(_blocks, w, h),
             ),
 
-            // Content
-            Column(
-              children: [
-                const SizedBox(height: 24),
+            // Content — бүхэлдээ голлосон
+            SizedBox(
+              width: w,
+              height: h,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 16),
 
-                // Animated TETRIS logo
-                _buildAnimatedLogo(),
+                  // Animated TETRIS logo — голдоо
+                  Center(child: _buildAnimatedLogo()),
 
-                const Spacer(),
+                  const Spacer(),
 
-                // Pulsing PLAY button
-                ScaleTransition(
-                  scale: _pulseAnim,
-                  child: _buildPlayButton(),
-                ),
+                  // Pulsing PLAY button
+                  Center(
+                    child: ScaleTransition(
+                      scale: _pulseAnim,
+                      child: _buildPlayButton(),
+                    ),
+                  ),
 
-                const SizedBox(height: 40),
+                  const SizedBox(height: 40),
 
-                // Animated score board
-                ScaleTransition(
-                  scale: _scoreAnim,
-                  child: _buildScoreBoard(),
-                ),
+                  // Animated score board
+                  Center(
+                    child: ScaleTransition(
+                      scale: _scoreAnim,
+                      child: _buildScoreBoard(),
+                    ),
+                  ),
 
-                const SizedBox(height: 80),
-              ],
+                  const SizedBox(height: 60),
+                ],
+              ),
             ),
           ],
         );
@@ -279,47 +299,51 @@ class _ArcadeHomeMenuState extends State<ArcadeHomeMenu>
       Colors.purple,
     ];
 
+    // Дэлгэцийн өргөнд тохируулсан хэмжээ
+    final double logoFontSize = (_screenW * 0.11).clamp(32.0, 52.0);
+    final double frameW = (_screenW * 0.68).clamp(200.0, 300.0);
+    final double frameH = logoFontSize * 2.4;
+
     return Stack(
-      alignment: Alignment.topCenter,
+      alignment: Alignment.center,
       children: [
+        // Хүрээ
         Container(
-          margin: const EdgeInsets.only(top: 20),
-          width: 250,
-          height: 120,
+          width: frameW,
+          height: frameH,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.blue.shade800, width: 8),
-            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.blue.shade800, width: 7),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: letters.asMap().entries.map((e) {
-              final delay = e.key * 0.12;
-              return AnimatedBuilder(
-                animation: _logoCtrl,
-                builder: (context, child) {
-                  final t = ((_logoCtrl.value - delay) / (1 - delay)).clamp(0.0, 1.0);
-                  final curve = Curves.easeOutBack.transform(t);
-                  return Transform.translate(
-                    offset: Offset(0, (1 - curve) * -40),
-                    child: Opacity(opacity: t, child: child),
-                  );
-                },
-                child: Text(
-                  e.value,
-                  style: GoogleFonts.bungee(
-                    fontSize: 45,
-                    color: colors[e.key],
-                    shadows: const [
-                      Shadow(offset: Offset(3, 3), blurRadius: 3, color: Colors.black),
-                    ],
-                  ),
+        // Үсгүүд
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: letters.asMap().entries.map((e) {
+            final delay = e.key * 0.12;
+            return AnimatedBuilder(
+              animation: _logoCtrl,
+              builder: (context, child) {
+                final t = ((_logoCtrl.value - delay) / (1 - delay)).clamp(0.0, 1.0);
+                final curve = Curves.easeOutBack.transform(t);
+                return Transform.translate(
+                  offset: Offset(0, (1 - curve) * -40),
+                  child: Opacity(opacity: t, child: child),
+                );
+              },
+              child: Text(
+                e.value,
+                style: GoogleFonts.bungee(
+                  fontSize: logoFontSize,
+                  color: colors[e.key],
+                  shadows: const [
+                    Shadow(offset: Offset(3, 3), blurRadius: 3, color: Colors.black),
+                  ],
                 ),
-              );
-            }).toList(),
-          ),
+              ),
+            );
+          }).toList(),
         ),
       ],
     );
