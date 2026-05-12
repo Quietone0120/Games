@@ -1,17 +1,12 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ScoreService {
-  /// Тоглолтын оноог хадгалж, total_score-г тооцоолно.
+  /// total_score = тоглоом тус бүрийн ХАМГИЙН ӨНДӨР оноонуудын нийлбэр
   ///
-  /// Тооцооллын дүрэм:
-  ///   total_score = Σ ( тоглоом тус бүрийн хамгийн өндөр оноо )
-  ///
-  /// Жишээ:
-  ///   Tetris:      1000, 900, 800  →  best = 1000
-  ///   Flappy Bird: 30,  50,  20   →  best = 50
-  ///   Tank War:    200, 300        →  best = 300
-  ///   ──────────────────────────────────────────
-  ///   total_score = 1000 + 50 + 300 = 1350
+  /// Flappy Bird: 10, 5, 15, 3  →  best = 15
+  /// Tetris:      1000, 900      →  best = 1000
+  /// ──────────────────────────
+  /// total_score = 15 + 1000 = 1015
   static Future<void> submitScore({
     required String gameName,
     required int score,
@@ -21,7 +16,7 @@ class ScoreService {
     if (user == null) return;
 
     try {
-      // 1. Тоглолтын оноог game_scores хүснэгтэд хадгална
+      // 1. Тоглолтыг хадгална
       await Supabase.instance.client.from('game_scores').insert({
         'user_id': user.id,
         'game_name': gameName,
@@ -29,8 +24,8 @@ class ScoreService {
         'playtime_seconds': playtimeSeconds,
       });
 
-      // 2. Энэ тоглогчийн БҮХ тоглолтыг татна (шинэ оноо орсны дараа)
-      final allScores = await Supabase.instance.client
+      // 2. Энэ тоглогчийн бүх тоглолтыг татна
+      final List allScores = await Supabase.instance.client
           .from('game_scores')
           .select('game_name, score')
           .eq('user_id', user.id);
@@ -45,15 +40,29 @@ class ScoreService {
         }
       }
 
-      // 4. Нийт оноо = тоглоом тус бүрийн best-үүдийн нийлбэр
-      final int newTotal =
-          bestPerGame.values.fold(0, (sum, s) => sum + s);
+      // Debug: юу тооцоолж байгааг харуулна
+      print('=== ScoreService DEBUG ===');
+      print('Submitted: $gameName → $score pts');
+      print('Best per game: $bestPerGame');
 
-      // 5. profiles хүснэгтийн total_score-г шинэчилнэ
+      // 4. Нийт = best-үүдийн нийлбэр
+      final int newTotal = bestPerGame.values.fold(0, (sum, s) => sum + s);
+      print('New total_score = $newTotal');
+      print('==========================');
+
+      // 5. total_score-г ШУУД ТОХИРУУЛНА (нэмэхгүй, орлуулна)
       await Supabase.instance.client
           .from('profiles')
           .update({'total_score': newTotal})
           .eq('id', user.id);
+
+      // 6. Баталгаажуулна — update хийсний дараа утгыг уншина
+      final check = await Supabase.instance.client
+          .from('profiles')
+          .select('total_score')
+          .eq('id', user.id)
+          .single();
+      print('DB total_score after update: ${check['total_score']}');
 
     } catch (e) {
       print('ScoreService error: $e');
