@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flame/game.dart';
 import 'tetris_game.dart';
 import '../constants/score_service.dart';
+import '../constants/audio_service.dart';
 
 class TetrisMainMenuWrapper extends StatefulWidget {
   const TetrisMainMenuWrapper({super.key});
@@ -22,6 +23,12 @@ class _TetrisMainMenuWrapperState extends State<TetrisMainMenuWrapper> {
   void initState() {
     super.initState();
     _loadHighScore();
+    _startMenuMusic();
+  }
+
+  Future<void> _startMenuMusic() async {
+    await AudioService.init();
+    await AudioService.playBgm(AudioService.bgmTetris);
   }
 
   _loadHighScore() async {
@@ -32,6 +39,9 @@ class _TetrisMainMenuWrapperState extends State<TetrisMainMenuWrapper> {
   }
 
   void _onGameOver(int finalScore) async {
+    // 🔊 Game over дуу
+    await AudioService.playSfx(AudioService.sfxGameover);
+
     final prefs = await SharedPreferences.getInstance();
     if (finalScore > highScore) {
       await prefs.setInt('highScore', finalScore);
@@ -48,7 +58,11 @@ class _TetrisMainMenuWrapperState extends State<TetrisMainMenuWrapper> {
       playtimeSeconds: playtime,
     );
     Future.delayed(const Duration(milliseconds: 1500), () {
-      if (mounted) setState(() => isPlaying = false);
+      if (mounted) {
+        setState(() => isPlaying = false);
+        // Цэс рүү буцаад хөгжим дахин эхлүүлнэ
+        AudioService.playBgm(AudioService.bgmTetris);
+      }
     });
   }
 
@@ -66,6 +80,7 @@ class _TetrisMainMenuWrapperState extends State<TetrisMainMenuWrapper> {
           : ArcadeHomeMenu(
               highScore: highScore,
               onStart: () {
+                AudioService.playSfx(AudioService.sfxClick);
                 _startTime = DateTime.now();
                 setState(() => isPlaying = true);
               },

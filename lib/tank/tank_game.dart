@@ -6,6 +6,7 @@ import 'package:flame/effects.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import '../constants/score_service.dart';
+import '../constants/audio_service.dart';
 
 // --- Global State ---
 class GameProgress {
@@ -46,6 +47,7 @@ class _MainMenuState extends State<TankMainMenu> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    _initAudio();
 
     _titleCtrl = AnimationController(
       vsync: this,
@@ -75,6 +77,11 @@ class _MainMenuState extends State<TankMainMenu> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 700),
     )..forward();
     _slideAnim = CurvedAnimation(parent: _slideCtrl, curve: Curves.easeOutBack);
+  }
+
+  Future<void> _initAudio() async {
+    await AudioService.init();
+    await AudioService.playBgm(AudioService.bgmTank);
   }
 
   @override
@@ -199,6 +206,7 @@ class _MainMenuState extends State<TankMainMenu> with TickerProviderStateMixin {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
+                      AudioService.playSfx(AudioService.sfxClick);
                       GameProgress.playerLives.value = 3;
                       GameProgress.enemiesLeft.value = 5;
                       Navigator.push(
@@ -653,6 +661,7 @@ abstract class Tank extends PositionComponent
   }
 
   void fire() {
+    AudioService.playSfx(AudioService.sfxShoot); // 🔊 буудах дуу
     gameRef.add(
       Bullet(
         position: position.clone(),
@@ -777,9 +786,11 @@ class Bullet extends RectangleComponent
   void onCollisionStart(Set<Vector2> pts, PositionComponent other) {
     super.onCollisionStart(pts, other);
     if (isPlayer && other is EnemyTank) {
+      AudioService.playSfx(AudioService.sfxExplode); // 🔊 дэлбэрэх дуу
       other.die();
       removeFromParent();
     } else if (!isPlayer && other is PlayerTank) {
+      AudioService.playSfx(AudioService.sfxExplode); // 🔊 өөрийн танк цохигдох
       other.hit();
       removeFromParent();
     } else if (other is Wall) {

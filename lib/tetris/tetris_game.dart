@@ -4,6 +4,7 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../constants/audio_service.dart';
 
 // --- Дүрсийн төрлүүд ---
 enum Tetromino { I, J, L, O, S, T, Z }
@@ -171,13 +172,13 @@ class TetrisGame extends FlameGame with KeyboardEvents {
         board.removeAt(r);
         board.insert(0, List.generate(cols, (_) => null));
         linesCleared++;
-        r++; // Устгасан мөрийн дээрх мөрийг дахин шалгах
+        r++;
       }
     }
     if (linesCleared > 0) {
       score += (linesCleared * 100 * linesCleared);
-      // Оноо ахих тусам хурд бага зэрэг нэмэгдэнэ
       if (tickTime > 0.1) tickTime -= 0.01;
+      AudioService.playSfx(AudioService.sfxClear); // 🔊 мөр устгах дуу
     }
   }
 
@@ -359,11 +360,15 @@ class TetrisGame extends FlameGame with KeyboardEvents {
       if (isGameOver) return KeyEventResult.handled;
 
       if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
-        if (!checkCollision(currentX - 1, currentY, currentPiece!.shape))
+        if (!checkCollision(currentX - 1, currentY, currentPiece!.shape)) {
           currentX--;
+          AudioService.playSfx(AudioService.sfxMove); // 🔊 зүүн
+        }
       } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
-        if (!checkCollision(currentX + 1, currentY, currentPiece!.shape))
+        if (!checkCollision(currentX + 1, currentY, currentPiece!.shape)) {
           currentX++;
+          AudioService.playSfx(AudioService.sfxMove); // 🔊 баруун
+        }
       } else if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
         if (!checkCollision(currentX, currentY + 1, currentPiece!.shape))
           currentY++;
@@ -374,10 +379,11 @@ class TetrisGame extends FlameGame with KeyboardEvents {
         );
         currentPiece!.rotate();
         if (checkCollision(currentX, currentY, currentPiece!.shape)) {
-          currentPiece!.shape = oldShape; // Хэрэв эргэх боломжгүй бол буцаана
+          currentPiece!.shape = oldShape;
+        } else {
+          AudioService.playSfx(AudioService.sfxRotate); // 🔊 эргэх
         }
       } else if (event.logicalKey == LogicalKeyboardKey.space) {
-        // Hard Drop (Шууд доош унагах)
         while (!checkCollision(currentX, currentY + 1, currentPiece!.shape)) {
           currentY++;
         }
