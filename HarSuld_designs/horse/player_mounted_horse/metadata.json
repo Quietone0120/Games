@@ -1,0 +1,219 @@
+{
+  "character": {
+    "id": "291847b3-92c4-4bad-ac0e-a6947c05bcc3",
+    "name": "A full-body Mongolian warrior already mounted on and riding a powerful steppe horse, with the rider seated firmly in the saddle and in full control of the horse. The warrior has a strong masculine build, a stern face, and a noble yet intimidating presence. He wears dark layered lamellar armor over a deep purple deel-like robe, a fur shoulder mantle, a traditional Mongolian metal helmet with cheek flaps and a nose guard, armored bracers, leather boots, and an ornate belt with gold details. He holds a curved sword while riding. The horse is a strong steppe mount with a tan coat, black flowing mane, black tail, and dark lower legs. The composition should clearly show that the warrior is already on the horse, not standing beside it or mounting it, but actively riding it. Historical steppe soldier, realistic, highly detailed, battle-ready, commanding, authentic Mongolian warrior aesthetic.",
+    "prompt": "A full-body Mongolian warrior already mounted on and riding a powerful steppe horse, with the rider seated firmly in the saddle and in full control of the horse. The warrior has a strong masculine build, a stern face, and a noble yet intimidating presence. He wears dark layered lamellar armor over a deep purple deel-like robe, a fur shoulder mantle, a traditional Mongolian metal helmet with cheek flaps and a nose guard, armored bracers, leather boots, and an ornate belt with gold details. He holds a curved sword while riding. The horse is a strong steppe mount with a tan coat, black flowing mane, black tail, and dark lower legs. The composition should clearly show that the warrior is already on the horse, not standing beside it or mounting it, but actively riding it. Historical steppe soldier, realistic, highly detailed, battle-ready, commanding, authentic Mongolian warrior aesthetic.",
+    "size": {
+      "width": 80,
+      "height": 80
+    },
+    "template_id": "horse",
+    "directions": 8,
+    "view": "low top-down",
+    "created_at": "2026-04-09T17:09:36.280152+00:00"
+  },
+  "frames": {
+    "rotations": {
+      "south": "rotations/south.png",
+      "south-east": "rotations/south-east.png",
+      "east": "rotations/east.png",
+      "north-east": "rotations/north-east.png",
+      "north": "rotations/north.png",
+      "north-west": "rotations/north-west.png",
+      "west": "rotations/west.png",
+      "south-west": "rotations/south-west.png"
+    },
+    "animations": {
+      "animation-5a20b58b": {
+        "south": [
+          "animations/animation-5a20b58b/south/frame_000.png",
+          "animations/animation-5a20b58b/south/frame_001.png",
+          "animations/animation-5a20b58b/south/frame_002.png",
+          "animations/animation-5a20b58b/south/frame_003.png",
+          "animations/animation-5a20b58b/south/frame_004.png",
+          "animations/animation-5a20b58b/south/frame_005.png",
+          "animations/animation-5a20b58b/south/frame_006.png",
+          "animations/animation-5a20b58b/south/frame_007.png"
+        ],
+        "north": [
+          "animations/animation-5a20b58b/north/frame_000.png",
+          "animations/animation-5a20b58b/north/frame_001.png",
+          "animations/animation-5a20b58b/north/frame_002.png",
+          "animations/animation-5a20b58b/north/frame_003.png",
+          "animations/animation-5a20b58b/north/frame_004.png",
+          "animations/animation-5a20b58b/north/frame_005.png",
+          "animations/animation-5a20b58b/north/frame_006.png",
+          "animations/animation-5a20b58b/north/frame_007.png"
+        ],
+        "east": [
+          "animations/animation-5a20b58b/east/frame_000.png",
+          "animations/animation-5a20b58b/east/frame_001.png",
+          "animations/animation-5a20b58b/east/frame_002.png",
+          "animations/animation-5a20b58b/east/frame_003.png",
+          "animations/animation-5a20b58b/east/frame_004.png",
+          "animations/animation-5a20b58b/east/frame_005.png",
+          "animations/animation-5a20b58b/east/frame_006.png",
+          "animations/animation-5a20b58b/east/frame_007.png"
+        ],
+        "north-west": [
+          "animations/animation-5a20b58b/north-west/frame_000.png",
+          "animations/animation-5a20b58b/north-west/frame_001.png",
+          "animations/animation-5a20b58b/north-west/frame_002.png",
+          "animations/animation-5a20b58b/north-west/frame_003.png",
+          "animations/animation-5a20b58b/north-west/frame_004.png",
+          "animations/animation-5a20b58b/north-west/frame_005.png",
+          "animations/animation-5a20b58b/north-west/frame_006.png",
+          "animations/animation-5a20b58b/north-west/frame_007.png"
+        ],
+        "south-west": [
+          "animations/animation-5a20b58b/south-west/frame_000.png",
+          "animations/animation-5a20b58b/south-west/frame_001.png",
+          "animations/animation-5a20b58b/south-west/frame_002.png",
+          "animations/animation-5a20b58b/south-west/frame_003.png",
+          "animations/animation-5a20b58b/south-west/frame_004.png",
+          "animations/animation-5a20b58b/south-west/frame_005.png",
+          "animations/animation-5a20b58b/south-west/frame_006.png",
+          "animations/animation-5a20b58b/south-west/frame_007.png"
+        ],
+        "north-east": [
+          "animations/animation-5a20b58b/north-east/frame_000.png",
+          "animations/animation-5a20b58b/north-east/frame_001.png",
+          "animations/animation-5a20b58b/north-east/frame_002.png",
+          "animations/animation-5a20b58b/north-east/frame_003.png",
+          "animations/animation-5a20b58b/north-east/frame_004.png",
+          "animations/animation-5a20b58b/north-east/frame_005.png",
+          "animations/animation-5a20b58b/north-east/frame_006.png",
+          "animations/animation-5a20b58b/north-east/frame_007.png"
+        ],
+        "west": [
+          "animations/animation-5a20b58b/west/frame_000.png",
+          "animations/animation-5a20b58b/west/frame_001.png",
+          "animations/animation-5a20b58b/west/frame_002.png",
+          "animations/animation-5a20b58b/west/frame_003.png",
+          "animations/animation-5a20b58b/west/frame_004.png",
+          "animations/animation-5a20b58b/west/frame_005.png",
+          "animations/animation-5a20b58b/west/frame_006.png",
+          "animations/animation-5a20b58b/west/frame_007.png"
+        ],
+        "south-east": [
+          "animations/animation-5a20b58b/south-east/frame_000.png",
+          "animations/animation-5a20b58b/south-east/frame_001.png",
+          "animations/animation-5a20b58b/south-east/frame_002.png",
+          "animations/animation-5a20b58b/south-east/frame_003.png",
+          "animations/animation-5a20b58b/south-east/frame_004.png",
+          "animations/animation-5a20b58b/south-east/frame_005.png",
+          "animations/animation-5a20b58b/south-east/frame_006.png",
+          "animations/animation-5a20b58b/south-east/frame_007.png"
+        ]
+      },
+      "Idle_Shaking_Head-25bcf6fd": {
+        "north-east": [
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_000.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_001.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_002.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_003.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_004.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_005.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_006.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_007.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_008.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_009.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-east/frame_010.png"
+        ],
+        "north": [
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_000.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_001.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_002.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_003.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_004.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_005.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_006.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_007.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_008.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_009.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north/frame_010.png"
+        ],
+        "south": [
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_000.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_001.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_002.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_003.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_004.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_005.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_006.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_007.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_008.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_009.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south/frame_010.png"
+        ],
+        "east": [
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_000.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_001.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_002.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_003.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_004.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_005.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_006.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_007.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_008.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_009.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/east/frame_010.png"
+        ],
+        "south-east": [
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_000.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_001.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_002.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_003.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_004.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_005.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_006.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_007.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_008.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_009.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-east/frame_010.png"
+        ],
+        "north-west": [
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_000.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_001.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_002.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_003.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_004.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_005.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_006.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_007.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_008.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_009.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/north-west/frame_010.png"
+        ],
+        "west": [
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_000.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_001.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_002.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_003.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_004.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_005.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_006.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_007.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_008.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_009.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/west/frame_010.png"
+        ],
+        "south-west": [
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_000.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_001.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_002.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_003.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_004.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_005.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_006.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_007.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_008.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_009.png",
+          "animations/Idle_Shaking_Head-25bcf6fd/south-west/frame_010.png"
+        ]
+      }
+    }
+  },
+  "export_version": "2.0",
+  "export_date": "2026-04-09T17:28:29.103957"
+}

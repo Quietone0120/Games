@@ -1,0 +1,405 @@
+{
+  "character": {
+    "id": "303d31c4-9268-40ff-abfb-c7118848586d",
+    "name": "Mongolian warrior, full body, dark layered lamellar armor, deep purple deel-like robe under armor, fur shoulder mantle, traditional Mongolian metal helmet with cheek flaps and nose guard, stern face, strong masculine build, armored bracers, leather boots, ornate belt with gold details, curved sword, historical steppe soldier, realistic, detailed, intimidating, noble warrior",
+    "prompt": "Mongolian warrior, full body, dark layered lamellar armor, deep purple deel-like robe under armor, fur shoulder mantle, traditional Mongolian metal helmet with cheek flaps and nose guard, stern face, strong masculine build, armored bracers, leather boots, ornate belt with gold details, curved sword, historical steppe soldier, realistic, detailed, intimidating, noble warrior",
+    "size": {
+      "width": 68,
+      "height": 68
+    },
+    "template_id": "mannequin",
+    "directions": 8,
+    "view": "low top-down",
+    "created_at": "2026-04-09T07:23:38.405407+00:00"
+  },
+  "frames": {
+    "rotations": {
+      "south": "rotations/south.png",
+      "south-east": "rotations/south-east.png",
+      "east": "rotations/east.png",
+      "north-east": "rotations/north-east.png",
+      "north": "rotations/north.png",
+      "north-west": "rotations/north-west.png",
+      "west": "rotations/west.png",
+      "south-west": "rotations/south-west.png"
+    },
+    "animations": {
+      "Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a": {
+        "north-east": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-east/frame_016.png"
+        ],
+        "south-west-883226e0": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-883226e0/frame_016.png"
+        ],
+        "south-west-30133a10": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-west-30133a10/frame_016.png"
+        ],
+        "east": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/east/frame_016.png"
+        ],
+        "south-east": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south-east/frame_016.png"
+        ],
+        "south": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/south/frame_016.png"
+        ],
+        "north-west": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north-west/frame_016.png"
+        ],
+        "west": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/west/frame_016.png"
+        ],
+        "north": [
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_000.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_001.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_002.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_003.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_004.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_005.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_006.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_007.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_008.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_009.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_010.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_011.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_012.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_013.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_014.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_015.png",
+          "animations/Bow_attack_animation_the_Mongolian_warrior_quickly-e00d3c3a/north/frame_016.png"
+        ]
+      },
+      "Breathing_Idle-e7ee78d0": {
+        "south": [
+          "animations/Breathing_Idle-e7ee78d0/south/frame_000.png",
+          "animations/Breathing_Idle-e7ee78d0/south/frame_001.png",
+          "animations/Breathing_Idle-e7ee78d0/south/frame_002.png",
+          "animations/Breathing_Idle-e7ee78d0/south/frame_003.png"
+        ],
+        "north-east": [
+          "animations/Breathing_Idle-e7ee78d0/north-east/frame_000.png",
+          "animations/Breathing_Idle-e7ee78d0/north-east/frame_001.png",
+          "animations/Breathing_Idle-e7ee78d0/north-east/frame_002.png",
+          "animations/Breathing_Idle-e7ee78d0/north-east/frame_003.png"
+        ],
+        "north-west": [
+          "animations/Breathing_Idle-e7ee78d0/north-west/frame_000.png",
+          "animations/Breathing_Idle-e7ee78d0/north-west/frame_001.png",
+          "animations/Breathing_Idle-e7ee78d0/north-west/frame_002.png",
+          "animations/Breathing_Idle-e7ee78d0/north-west/frame_003.png"
+        ],
+        "west": [
+          "animations/Breathing_Idle-e7ee78d0/west/frame_000.png",
+          "animations/Breathing_Idle-e7ee78d0/west/frame_001.png",
+          "animations/Breathing_Idle-e7ee78d0/west/frame_002.png",
+          "animations/Breathing_Idle-e7ee78d0/west/frame_003.png"
+        ],
+        "south-west": [
+          "animations/Breathing_Idle-e7ee78d0/south-west/frame_000.png",
+          "animations/Breathing_Idle-e7ee78d0/south-west/frame_001.png",
+          "animations/Breathing_Idle-e7ee78d0/south-west/frame_002.png",
+          "animations/Breathing_Idle-e7ee78d0/south-west/frame_003.png"
+        ],
+        "south-east": [
+          "animations/Breathing_Idle-e7ee78d0/south-east/frame_000.png",
+          "animations/Breathing_Idle-e7ee78d0/south-east/frame_001.png",
+          "animations/Breathing_Idle-e7ee78d0/south-east/frame_002.png",
+          "animations/Breathing_Idle-e7ee78d0/south-east/frame_003.png"
+        ],
+        "east": [
+          "animations/Breathing_Idle-e7ee78d0/east/frame_000.png",
+          "animations/Breathing_Idle-e7ee78d0/east/frame_001.png",
+          "animations/Breathing_Idle-e7ee78d0/east/frame_002.png",
+          "animations/Breathing_Idle-e7ee78d0/east/frame_003.png"
+        ],
+        "north": [
+          "animations/Breathing_Idle-e7ee78d0/north/frame_000.png",
+          "animations/Breathing_Idle-e7ee78d0/north/frame_001.png",
+          "animations/Breathing_Idle-e7ee78d0/north/frame_002.png",
+          "animations/Breathing_Idle-e7ee78d0/north/frame_003.png"
+        ]
+      },
+      "Running-a52f8189": {
+        "north-west": [
+          "animations/Running-a52f8189/north-west/frame_000.png",
+          "animations/Running-a52f8189/north-west/frame_001.png",
+          "animations/Running-a52f8189/north-west/frame_002.png",
+          "animations/Running-a52f8189/north-west/frame_003.png",
+          "animations/Running-a52f8189/north-west/frame_004.png",
+          "animations/Running-a52f8189/north-west/frame_005.png",
+          "animations/Running-a52f8189/north-west/frame_006.png",
+          "animations/Running-a52f8189/north-west/frame_007.png"
+        ],
+        "south-west": [
+          "animations/Running-a52f8189/south-west/frame_000.png",
+          "animations/Running-a52f8189/south-west/frame_001.png",
+          "animations/Running-a52f8189/south-west/frame_002.png",
+          "animations/Running-a52f8189/south-west/frame_003.png",
+          "animations/Running-a52f8189/south-west/frame_004.png",
+          "animations/Running-a52f8189/south-west/frame_005.png",
+          "animations/Running-a52f8189/south-west/frame_006.png",
+          "animations/Running-a52f8189/south-west/frame_007.png"
+        ],
+        "west": [
+          "animations/Running-a52f8189/west/frame_000.png",
+          "animations/Running-a52f8189/west/frame_001.png",
+          "animations/Running-a52f8189/west/frame_002.png",
+          "animations/Running-a52f8189/west/frame_003.png",
+          "animations/Running-a52f8189/west/frame_004.png",
+          "animations/Running-a52f8189/west/frame_005.png",
+          "animations/Running-a52f8189/west/frame_006.png",
+          "animations/Running-a52f8189/west/frame_007.png"
+        ],
+        "south-east": [
+          "animations/Running-a52f8189/south-east/frame_000.png",
+          "animations/Running-a52f8189/south-east/frame_001.png",
+          "animations/Running-a52f8189/south-east/frame_002.png",
+          "animations/Running-a52f8189/south-east/frame_003.png",
+          "animations/Running-a52f8189/south-east/frame_004.png",
+          "animations/Running-a52f8189/south-east/frame_005.png",
+          "animations/Running-a52f8189/south-east/frame_006.png",
+          "animations/Running-a52f8189/south-east/frame_007.png"
+        ],
+        "south": [
+          "animations/Running-a52f8189/south/frame_000.png",
+          "animations/Running-a52f8189/south/frame_001.png",
+          "animations/Running-a52f8189/south/frame_002.png",
+          "animations/Running-a52f8189/south/frame_003.png",
+          "animations/Running-a52f8189/south/frame_004.png",
+          "animations/Running-a52f8189/south/frame_005.png",
+          "animations/Running-a52f8189/south/frame_006.png",
+          "animations/Running-a52f8189/south/frame_007.png"
+        ],
+        "north": [
+          "animations/Running-a52f8189/north/frame_000.png",
+          "animations/Running-a52f8189/north/frame_001.png",
+          "animations/Running-a52f8189/north/frame_002.png",
+          "animations/Running-a52f8189/north/frame_003.png",
+          "animations/Running-a52f8189/north/frame_004.png",
+          "animations/Running-a52f8189/north/frame_005.png",
+          "animations/Running-a52f8189/north/frame_006.png",
+          "animations/Running-a52f8189/north/frame_007.png"
+        ],
+        "north-east": [
+          "animations/Running-a52f8189/north-east/frame_000.png",
+          "animations/Running-a52f8189/north-east/frame_001.png",
+          "animations/Running-a52f8189/north-east/frame_002.png",
+          "animations/Running-a52f8189/north-east/frame_003.png",
+          "animations/Running-a52f8189/north-east/frame_004.png",
+          "animations/Running-a52f8189/north-east/frame_005.png",
+          "animations/Running-a52f8189/north-east/frame_006.png",
+          "animations/Running-a52f8189/north-east/frame_007.png"
+        ],
+        "east": [
+          "animations/Running-a52f8189/east/frame_000.png",
+          "animations/Running-a52f8189/east/frame_001.png",
+          "animations/Running-a52f8189/east/frame_002.png",
+          "animations/Running-a52f8189/east/frame_003.png",
+          "animations/Running-a52f8189/east/frame_004.png",
+          "animations/Running-a52f8189/east/frame_005.png",
+          "animations/Running-a52f8189/east/frame_006.png",
+          "animations/Running-a52f8189/east/frame_007.png"
+        ]
+      },
+      "Falling_Back_Death-446bf09a": {
+        "south": [
+          "animations/Falling_Back_Death-446bf09a/south/frame_000.png",
+          "animations/Falling_Back_Death-446bf09a/south/frame_001.png",
+          "animations/Falling_Back_Death-446bf09a/south/frame_002.png",
+          "animations/Falling_Back_Death-446bf09a/south/frame_003.png",
+          "animations/Falling_Back_Death-446bf09a/south/frame_004.png",
+          "animations/Falling_Back_Death-446bf09a/south/frame_005.png",
+          "animations/Falling_Back_Death-446bf09a/south/frame_006.png"
+        ]
+      },
+      "Picking_Up-028762ef": {
+        "north-east": [
+          "animations/Picking_Up-028762ef/north-east/frame_000.png",
+          "animations/Picking_Up-028762ef/north-east/frame_001.png",
+          "animations/Picking_Up-028762ef/north-east/frame_002.png",
+          "animations/Picking_Up-028762ef/north-east/frame_003.png",
+          "animations/Picking_Up-028762ef/north-east/frame_004.png"
+        ],
+        "south-east": [
+          "animations/Picking_Up-028762ef/south-east/frame_000.png",
+          "animations/Picking_Up-028762ef/south-east/frame_001.png",
+          "animations/Picking_Up-028762ef/south-east/frame_002.png",
+          "animations/Picking_Up-028762ef/south-east/frame_003.png",
+          "animations/Picking_Up-028762ef/south-east/frame_004.png"
+        ],
+        "east": [
+          "animations/Picking_Up-028762ef/east/frame_000.png",
+          "animations/Picking_Up-028762ef/east/frame_001.png",
+          "animations/Picking_Up-028762ef/east/frame_002.png",
+          "animations/Picking_Up-028762ef/east/frame_003.png",
+          "animations/Picking_Up-028762ef/east/frame_004.png"
+        ],
+        "west": [
+          "animations/Picking_Up-028762ef/west/frame_000.png",
+          "animations/Picking_Up-028762ef/west/frame_001.png",
+          "animations/Picking_Up-028762ef/west/frame_002.png",
+          "animations/Picking_Up-028762ef/west/frame_003.png",
+          "animations/Picking_Up-028762ef/west/frame_004.png"
+        ],
+        "north": [
+          "animations/Picking_Up-028762ef/north/frame_000.png",
+          "animations/Picking_Up-028762ef/north/frame_001.png",
+          "animations/Picking_Up-028762ef/north/frame_002.png",
+          "animations/Picking_Up-028762ef/north/frame_003.png",
+          "animations/Picking_Up-028762ef/north/frame_004.png"
+        ],
+        "north-west": [
+          "animations/Picking_Up-028762ef/north-west/frame_000.png",
+          "animations/Picking_Up-028762ef/north-west/frame_001.png",
+          "animations/Picking_Up-028762ef/north-west/frame_002.png",
+          "animations/Picking_Up-028762ef/north-west/frame_003.png",
+          "animations/Picking_Up-028762ef/north-west/frame_004.png"
+        ],
+        "south": [
+          "animations/Picking_Up-028762ef/south/frame_000.png",
+          "animations/Picking_Up-028762ef/south/frame_001.png",
+          "animations/Picking_Up-028762ef/south/frame_002.png",
+          "animations/Picking_Up-028762ef/south/frame_003.png",
+          "animations/Picking_Up-028762ef/south/frame_004.png"
+        ],
+        "south-west": [
+          "animations/Picking_Up-028762ef/south-west/frame_000.png",
+          "animations/Picking_Up-028762ef/south-west/frame_001.png",
+          "animations/Picking_Up-028762ef/south-west/frame_002.png",
+          "animations/Picking_Up-028762ef/south-west/frame_003.png",
+          "animations/Picking_Up-028762ef/south-west/frame_004.png"
+        ]
+      }
+    }
+  },
+  "export_version": "2.0",
+  "export_date": "2026-04-09T09:39:03.753654"
+}

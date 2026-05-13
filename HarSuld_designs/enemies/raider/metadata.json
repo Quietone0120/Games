@@ -1,0 +1,229 @@
+{
+  "character": {
+    "id": "1dbbe875-42a6-4f51-a13a-3320656a998c",
+    "name": "A full-body pixel character of a stern Han dynasty soldier wearing a light-colored ancient Chinese military tunic with loose trousers, dark leg wraps, and simple cloth or leather shoes. He wears black lacquered lamellar armor with red trim and red fastening cords over the robe, along with a dark Han-style military headpiece or helmet with a red band. His posture is upright and disciplined, with a serious expression. He holds a straight or slightly curved dao-style sword in one hand, ready for close combat. The palette should use off-white, black, dark gray, muted brown, and strong red accents. The design should feel historical, practical, and suitable for a 2D pixel game.",
+    "prompt": "A full-body pixel character of a stern Han dynasty soldier wearing a light-colored ancient Chinese military tunic with loose trousers, dark leg wraps, and simple cloth or leather shoes. He wears black lacquered lamellar armor with red trim and red fastening cords over the robe, along with a dark Han-style military headpiece or helmet with a red band. His posture is upright and disciplined, with a serious expression. He holds a straight or slightly curved dao-style sword in one hand, ready for close combat. The palette should use off-white, black, dark gray, muted brown, and strong red accents. The design should feel historical, practical, and suitable for a 2D pixel game.",
+    "size": {
+      "width": 68,
+      "height": 68
+    },
+    "template_id": "mannequin",
+    "directions": 8,
+    "view": "low top-down",
+    "created_at": "2026-04-09T09:47:01.129126+00:00"
+  },
+  "frames": {
+    "rotations": {
+      "south": "rotations/south.png",
+      "south-east": "rotations/south-east.png",
+      "east": "rotations/east.png",
+      "north-east": "rotations/north-east.png",
+      "north": "rotations/north.png",
+      "north-west": "rotations/north-west.png",
+      "west": "rotations/west.png",
+      "south-west": "rotations/south-west.png"
+    },
+    "animations": {
+      "Running-d7a305fc": {
+        "west": [
+          "animations/Running-d7a305fc/west/frame_000.png",
+          "animations/Running-d7a305fc/west/frame_001.png",
+          "animations/Running-d7a305fc/west/frame_002.png",
+          "animations/Running-d7a305fc/west/frame_003.png",
+          "animations/Running-d7a305fc/west/frame_004.png",
+          "animations/Running-d7a305fc/west/frame_005.png",
+          "animations/Running-d7a305fc/west/frame_006.png",
+          "animations/Running-d7a305fc/west/frame_007.png"
+        ],
+        "south": [
+          "animations/Running-d7a305fc/south/frame_000.png",
+          "animations/Running-d7a305fc/south/frame_001.png",
+          "animations/Running-d7a305fc/south/frame_002.png",
+          "animations/Running-d7a305fc/south/frame_003.png",
+          "animations/Running-d7a305fc/south/frame_004.png",
+          "animations/Running-d7a305fc/south/frame_005.png",
+          "animations/Running-d7a305fc/south/frame_006.png",
+          "animations/Running-d7a305fc/south/frame_007.png"
+        ],
+        "south-west": [
+          "animations/Running-d7a305fc/south-west/frame_000.png",
+          "animations/Running-d7a305fc/south-west/frame_001.png",
+          "animations/Running-d7a305fc/south-west/frame_002.png",
+          "animations/Running-d7a305fc/south-west/frame_003.png",
+          "animations/Running-d7a305fc/south-west/frame_004.png",
+          "animations/Running-d7a305fc/south-west/frame_005.png",
+          "animations/Running-d7a305fc/south-west/frame_006.png",
+          "animations/Running-d7a305fc/south-west/frame_007.png"
+        ],
+        "south-east": [
+          "animations/Running-d7a305fc/south-east/frame_000.png",
+          "animations/Running-d7a305fc/south-east/frame_001.png",
+          "animations/Running-d7a305fc/south-east/frame_002.png",
+          "animations/Running-d7a305fc/south-east/frame_003.png",
+          "animations/Running-d7a305fc/south-east/frame_004.png",
+          "animations/Running-d7a305fc/south-east/frame_005.png",
+          "animations/Running-d7a305fc/south-east/frame_006.png",
+          "animations/Running-d7a305fc/south-east/frame_007.png"
+        ],
+        "north": [
+          "animations/Running-d7a305fc/north/frame_000.png",
+          "animations/Running-d7a305fc/north/frame_001.png",
+          "animations/Running-d7a305fc/north/frame_002.png",
+          "animations/Running-d7a305fc/north/frame_003.png",
+          "animations/Running-d7a305fc/north/frame_004.png",
+          "animations/Running-d7a305fc/north/frame_005.png",
+          "animations/Running-d7a305fc/north/frame_006.png",
+          "animations/Running-d7a305fc/north/frame_007.png"
+        ],
+        "north-east": [
+          "animations/Running-d7a305fc/north-east/frame_000.png",
+          "animations/Running-d7a305fc/north-east/frame_001.png",
+          "animations/Running-d7a305fc/north-east/frame_002.png",
+          "animations/Running-d7a305fc/north-east/frame_003.png",
+          "animations/Running-d7a305fc/north-east/frame_004.png",
+          "animations/Running-d7a305fc/north-east/frame_005.png",
+          "animations/Running-d7a305fc/north-east/frame_006.png",
+          "animations/Running-d7a305fc/north-east/frame_007.png"
+        ],
+        "north-west": [
+          "animations/Running-d7a305fc/north-west/frame_000.png",
+          "animations/Running-d7a305fc/north-west/frame_001.png",
+          "animations/Running-d7a305fc/north-west/frame_002.png",
+          "animations/Running-d7a305fc/north-west/frame_003.png",
+          "animations/Running-d7a305fc/north-west/frame_004.png",
+          "animations/Running-d7a305fc/north-west/frame_005.png",
+          "animations/Running-d7a305fc/north-west/frame_006.png",
+          "animations/Running-d7a305fc/north-west/frame_007.png"
+        ],
+        "east": [
+          "animations/Running-d7a305fc/east/frame_000.png",
+          "animations/Running-d7a305fc/east/frame_001.png",
+          "animations/Running-d7a305fc/east/frame_002.png",
+          "animations/Running-d7a305fc/east/frame_003.png",
+          "animations/Running-d7a305fc/east/frame_004.png",
+          "animations/Running-d7a305fc/east/frame_005.png",
+          "animations/Running-d7a305fc/east/frame_006.png",
+          "animations/Running-d7a305fc/east/frame_007.png"
+        ]
+      },
+      "Lead_Jab-341f453a": {
+        "north-east": [
+          "animations/Lead_Jab-341f453a/north-east/frame_000.png",
+          "animations/Lead_Jab-341f453a/north-east/frame_001.png",
+          "animations/Lead_Jab-341f453a/north-east/frame_002.png"
+        ],
+        "north-west": [
+          "animations/Lead_Jab-341f453a/north-west/frame_000.png",
+          "animations/Lead_Jab-341f453a/north-west/frame_001.png",
+          "animations/Lead_Jab-341f453a/north-west/frame_002.png"
+        ],
+        "north": [
+          "animations/Lead_Jab-341f453a/north/frame_000.png",
+          "animations/Lead_Jab-341f453a/north/frame_001.png",
+          "animations/Lead_Jab-341f453a/north/frame_002.png"
+        ],
+        "south": [
+          "animations/Lead_Jab-341f453a/south/frame_000.png",
+          "animations/Lead_Jab-341f453a/south/frame_001.png",
+          "animations/Lead_Jab-341f453a/south/frame_002.png"
+        ],
+        "south-west": [
+          "animations/Lead_Jab-341f453a/south-west/frame_000.png",
+          "animations/Lead_Jab-341f453a/south-west/frame_001.png",
+          "animations/Lead_Jab-341f453a/south-west/frame_002.png"
+        ],
+        "south-east": [
+          "animations/Lead_Jab-341f453a/south-east/frame_000.png",
+          "animations/Lead_Jab-341f453a/south-east/frame_001.png",
+          "animations/Lead_Jab-341f453a/south-east/frame_002.png"
+        ],
+        "west": [
+          "animations/Lead_Jab-341f453a/west/frame_000.png",
+          "animations/Lead_Jab-341f453a/west/frame_001.png",
+          "animations/Lead_Jab-341f453a/west/frame_002.png"
+        ],
+        "east": [
+          "animations/Lead_Jab-341f453a/east/frame_000.png",
+          "animations/Lead_Jab-341f453a/east/frame_001.png",
+          "animations/Lead_Jab-341f453a/east/frame_002.png"
+        ]
+      },
+      "Falling_Back_Death-abe7e98e": {
+        "south": [
+          "animations/Falling_Back_Death-abe7e98e/south/frame_000.png",
+          "animations/Falling_Back_Death-abe7e98e/south/frame_001.png",
+          "animations/Falling_Back_Death-abe7e98e/south/frame_002.png",
+          "animations/Falling_Back_Death-abe7e98e/south/frame_003.png",
+          "animations/Falling_Back_Death-abe7e98e/south/frame_004.png",
+          "animations/Falling_Back_Death-abe7e98e/south/frame_005.png",
+          "animations/Falling_Back_Death-abe7e98e/south/frame_006.png"
+        ],
+        "south-west": [
+          "animations/Falling_Back_Death-abe7e98e/south-west/frame_000.png",
+          "animations/Falling_Back_Death-abe7e98e/south-west/frame_001.png",
+          "animations/Falling_Back_Death-abe7e98e/south-west/frame_002.png",
+          "animations/Falling_Back_Death-abe7e98e/south-west/frame_003.png",
+          "animations/Falling_Back_Death-abe7e98e/south-west/frame_004.png",
+          "animations/Falling_Back_Death-abe7e98e/south-west/frame_005.png",
+          "animations/Falling_Back_Death-abe7e98e/south-west/frame_006.png"
+        ],
+        "south-east": [
+          "animations/Falling_Back_Death-abe7e98e/south-east/frame_000.png",
+          "animations/Falling_Back_Death-abe7e98e/south-east/frame_001.png",
+          "animations/Falling_Back_Death-abe7e98e/south-east/frame_002.png",
+          "animations/Falling_Back_Death-abe7e98e/south-east/frame_003.png",
+          "animations/Falling_Back_Death-abe7e98e/south-east/frame_004.png",
+          "animations/Falling_Back_Death-abe7e98e/south-east/frame_005.png",
+          "animations/Falling_Back_Death-abe7e98e/south-east/frame_006.png"
+        ],
+        "west": [
+          "animations/Falling_Back_Death-abe7e98e/west/frame_000.png",
+          "animations/Falling_Back_Death-abe7e98e/west/frame_001.png",
+          "animations/Falling_Back_Death-abe7e98e/west/frame_002.png",
+          "animations/Falling_Back_Death-abe7e98e/west/frame_003.png",
+          "animations/Falling_Back_Death-abe7e98e/west/frame_004.png",
+          "animations/Falling_Back_Death-abe7e98e/west/frame_005.png",
+          "animations/Falling_Back_Death-abe7e98e/west/frame_006.png"
+        ],
+        "north": [
+          "animations/Falling_Back_Death-abe7e98e/north/frame_000.png",
+          "animations/Falling_Back_Death-abe7e98e/north/frame_001.png",
+          "animations/Falling_Back_Death-abe7e98e/north/frame_002.png",
+          "animations/Falling_Back_Death-abe7e98e/north/frame_003.png",
+          "animations/Falling_Back_Death-abe7e98e/north/frame_004.png",
+          "animations/Falling_Back_Death-abe7e98e/north/frame_005.png",
+          "animations/Falling_Back_Death-abe7e98e/north/frame_006.png"
+        ],
+        "north-west": [
+          "animations/Falling_Back_Death-abe7e98e/north-west/frame_000.png",
+          "animations/Falling_Back_Death-abe7e98e/north-west/frame_001.png",
+          "animations/Falling_Back_Death-abe7e98e/north-west/frame_002.png",
+          "animations/Falling_Back_Death-abe7e98e/north-west/frame_003.png",
+          "animations/Falling_Back_Death-abe7e98e/north-west/frame_004.png",
+          "animations/Falling_Back_Death-abe7e98e/north-west/frame_005.png",
+          "animations/Falling_Back_Death-abe7e98e/north-west/frame_006.png"
+        ],
+        "east": [
+          "animations/Falling_Back_Death-abe7e98e/east/frame_000.png",
+          "animations/Falling_Back_Death-abe7e98e/east/frame_001.png",
+          "animations/Falling_Back_Death-abe7e98e/east/frame_002.png",
+          "animations/Falling_Back_Death-abe7e98e/east/frame_003.png",
+          "animations/Falling_Back_Death-abe7e98e/east/frame_004.png",
+          "animations/Falling_Back_Death-abe7e98e/east/frame_005.png",
+          "animations/Falling_Back_Death-abe7e98e/east/frame_006.png"
+        ],
+        "north-east": [
+          "animations/Falling_Back_Death-abe7e98e/north-east/frame_000.png",
+          "animations/Falling_Back_Death-abe7e98e/north-east/frame_001.png",
+          "animations/Falling_Back_Death-abe7e98e/north-east/frame_002.png",
+          "animations/Falling_Back_Death-abe7e98e/north-east/frame_003.png",
+          "animations/Falling_Back_Death-abe7e98e/north-east/frame_004.png",
+          "animations/Falling_Back_Death-abe7e98e/north-east/frame_005.png",
+          "animations/Falling_Back_Death-abe7e98e/north-east/frame_006.png"
+        ]
+      }
+    }
+  },
+  "export_version": "2.0",
+  "export_date": "2026-04-09T09:54:57.658356"
+}

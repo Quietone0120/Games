@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'tank/tank_game.dart';
 import 'tetris/tetris_menu.dart';
 import 'flappy/flappy_menu.dart';
+import 'har_suld/har_suld_menu.dart';
 import 'constants/supabase_config.dart';
 import 'profile/profile_screen.dart';
 import 'dashboard/leaderboard_screen.dart';
@@ -151,6 +152,23 @@ class LauncherScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const FlappyBirdWrapper()),
+                    );
+                  },
+                ),
+                _GameCard(
+                  title: 'Хар Сүлд',
+                  category: 'Tower Defense',
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF2A3A1A), Color(0xFF4A6A2A)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  icon: Icons.castle,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HarSuldWrapper()),
                     );
                   },
                 ),
