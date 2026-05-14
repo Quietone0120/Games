@@ -1,4 +1,4 @@
-name: tank_game
+name: game_hub
 description: "A new Flutter project."
 
 publish_to: 'none'
@@ -19,6 +19,9 @@ dependencies:
   shared_preferences: ^2.5.5
   supabase_flutter: ^2.12.4
   fl_chart: ^0.69.0
+  audioplayers: ^6.6.0
+  record: ^6.0.0
+  path_provider: ^2.0.0
 
 dev_dependencies:
   flutter_test:

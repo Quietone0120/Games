@@ -31,7 +31,7 @@ class _TetrisMainMenuWrapperState extends State<TetrisMainMenuWrapper> {
     await AudioService.playBgm(AudioService.bgmTetris);
   }
 
-  _loadHighScore() async {
+  Future<void> _loadHighScore() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       highScore = prefs.getInt('highScore') ?? 0;
@@ -76,7 +76,7 @@ class _TetrisMainMenuWrapperState extends State<TetrisMainMenuWrapper> {
         elevation: 0,
       ),
       body: isPlaying
-          ? GameWidget(game: TetrisGame(onGameOver: _onGameOver))
+          ? _TetrisPlayView(onGameOver: _onGameOver)
           : ArcadeHomeMenu(
               highScore: highScore,
               onStart: () {
@@ -85,6 +85,94 @@ class _TetrisMainMenuWrapperState extends State<TetrisMainMenuWrapper> {
                 setState(() => isPlaying = true);
               },
             ),
+    );
+  }
+}
+
+// ─── Tetris play view with mobile controls ───────────────────────────────────
+class _TetrisPlayView extends StatefulWidget {
+  final void Function(int) onGameOver;
+  const _TetrisPlayView({required this.onGameOver});
+
+  @override
+  State<_TetrisPlayView> createState() => _TetrisPlayViewState();
+}
+
+class _TetrisPlayViewState extends State<_TetrisPlayView> {
+  late final TetrisGame _game;
+
+  @override
+  void initState() {
+    super.initState();
+    _game = TetrisGame(onGameOver: widget.onGameOver);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        GameWidget(game: _game),
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: _MobileControls(game: _game),
+        ),
+      ],
+    );
+  }
+}
+
+class _MobileControls extends StatelessWidget {
+  final TetrisGame game;
+  const _MobileControls({required this.game});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      top: false,
+      child: Container(
+        color: Colors.black54,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                _btn(Icons.arrow_back, () => game.moveLeft()),
+                const SizedBox(width: 8),
+                _btn(Icons.arrow_forward, () => game.moveRight()),
+              ],
+            ),
+            Row(
+              children: [
+                _btn(Icons.rotate_right, () => game.rotatePiece()),
+                const SizedBox(width: 8),
+                _btn(Icons.arrow_downward, () => game.softDrop()),
+                const SizedBox(width: 8),
+                _btn(Icons.keyboard_double_arrow_down, () => game.hardDrop(),
+                    color: Colors.cyanAccent),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _btn(IconData icon, VoidCallback onTap, {Color color = Colors.white}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 52,
+        height: 52,
+        decoration: BoxDecoration(
+          color: Colors.white10,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.white24),
+        ),
+        child: Icon(icon, color: color, size: 28),
+      ),
     );
   }
 }

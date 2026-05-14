@@ -351,6 +351,50 @@ class TetrisGame extends FlameGame with KeyboardEvents {
     canvas.drawCircle(Offset(x + 8, y + 8), 3, highlightPaint);
   }
 
+  void moveLeft() {
+    if (isGameOver || currentPiece == null) return;
+    if (!checkCollision(currentX - 1, currentY, currentPiece!.shape)) {
+      currentX--;
+      AudioService.playSfx(AudioService.sfxMove);
+    }
+  }
+
+  void moveRight() {
+    if (isGameOver || currentPiece == null) return;
+    if (!checkCollision(currentX + 1, currentY, currentPiece!.shape)) {
+      currentX++;
+      AudioService.playSfx(AudioService.sfxMove);
+    }
+  }
+
+  void softDrop() {
+    if (isGameOver || currentPiece == null) return;
+    if (!checkCollision(currentX, currentY + 1, currentPiece!.shape)) {
+      currentY++;
+    }
+  }
+
+  void rotatePiece() {
+    if (isGameOver || currentPiece == null) return;
+    final oldShape = List<List<int>>.from(
+      currentPiece!.shape.map((e) => List<int>.from(e)),
+    );
+    currentPiece!.rotate();
+    if (checkCollision(currentX, currentY, currentPiece!.shape)) {
+      currentPiece!.shape = oldShape;
+    } else {
+      AudioService.playSfx(AudioService.sfxRotate);
+    }
+  }
+
+  void hardDrop() {
+    if (isGameOver || currentPiece == null) return;
+    while (!checkCollision(currentX, currentY + 1, currentPiece!.shape)) {
+      currentY++;
+    }
+    lockPiece();
+  }
+
   @override
   KeyEventResult onKeyEvent(
     KeyEvent event,

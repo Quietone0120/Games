@@ -201,6 +201,7 @@ class _HudOverlayState extends State<HudOverlay> {
     final phase = ws.phase;
     final wave = ws.currentWave;
     final displayedWave = phase == GamePhase.breakPhase ? wave + 1 : wave;
+    final score = game.score;
 
     return Container(
       constraints: BoxConstraints(maxWidth: layout.wavePanelMaxWidth),
@@ -218,36 +219,46 @@ class _HudOverlayState extends State<HudOverlay> {
         ),
       ),
       child: phase == GamePhase.wave
-          ? Row(
+          ? Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  Icons.warning_amber,
-                  color: Colors.red,
-                  size: layout.iconSize,
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.warning_amber,
+                      color: Colors.red,
+                      size: layout.iconSize,
+                    ),
+                    SizedBox(width: layout.inlineGap),
+                    Text(
+                      'WAVE $displayedWave',
+                      style: _ts(
+                        color: Colors.red,
+                        size: layout.textSize,
+                        bold: true,
+                      ),
+                    ),
+                    SizedBox(width: layout.compact ? 6 : 8),
+                    Flexible(
+                      child: Text(
+                        '${game.world.children.whereType<dynamic>().where((c) {
+                          try {
+                            return c.runtimeType.toString().contains('Enemy');
+                          } catch (_) {
+                            return false;
+                          }
+                        }).length} enemies',
+                        style: _ts(size: layout.smallText),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(width: layout.inlineGap),
+                const SizedBox(height: 2),
                 Text(
-                  'WAVE $displayedWave',
-                  style: _ts(
-                    color: Colors.red,
-                    size: layout.textSize,
-                    bold: true,
-                  ),
-                ),
-                SizedBox(width: layout.compact ? 6 : 8),
-                Flexible(
-                  child: Text(
-                    '${game.world.children.whereType<dynamic>().where((c) {
-                      try {
-                        return c.runtimeType.toString().contains('Enemy');
-                      } catch (_) {
-                        return false;
-                      }
-                    }).length} enemies',
-                    style: _ts(size: layout.smallText),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  'Оноо: $score',
+                  style: _ts(size: layout.smallText, color: Colors.amber, bold: true),
                 ),
               ],
             )
@@ -261,6 +272,10 @@ class _HudOverlayState extends State<HudOverlay> {
                     size: layout.textSize,
                     bold: true,
                   ),
+                ),
+                Text(
+                  'Оноо: $score',
+                  style: _ts(size: layout.smallText, color: Colors.amber[300], bold: true),
                 ),
                 Text(
                   'Upcoming wave: $displayedWave',
@@ -716,6 +731,14 @@ class _HudOverlayState extends State<HudOverlay> {
             }
           },
         ),
+        SizedBox(height: layout.actionGap),
+        _actionBtn(
+          layout: layout,
+          label: 'MENU',
+          icon: Icons.pause,
+          color: Colors.white70,
+          onTap: () => game.pauseGame(),
+        ),
       ],
     );
   }
@@ -933,6 +956,177 @@ class GameOverOverlay extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+class PauseMenuOverlay extends StatelessWidget {
+  final HarSuldGame game;
+  final VoidCallback? onMainMenu;
+  const PauseMenuOverlay({super.key, required this.game, this.onMainMenu});
+
+  @override
+  Widget build(BuildContext context) {
+    final score = game.score;
+    final wave = game.waveSystem.currentWave;
+
+    return ColoredBox(
+      color: Colors.black.withValues(alpha: 0.65),
+      child: Center(
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final compact = constraints.maxHeight < 430 || constraints.maxWidth < 600;
+            final width = math.min(compact ? 320.0 : 380.0, constraints.maxWidth - 24);
+
+            return Container(
+              width: width,
+              padding: EdgeInsets.all(compact ? 20 : 28),
+              decoration: BoxDecoration(
+                color: const Color(0xFF1A2A0E),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: Colors.amber.withValues(alpha: 0.7),
+                  width: 2,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    blurRadius: 20,
+                    spreadRadius: 4,
+                  ),
+                ],
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'ХАР СҮЛД',
+                    style: TextStyle(
+                      color: Colors.amber,
+                      fontSize: compact ? 20 : 24,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                  SizedBox(height: compact ? 6 : 8),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: compact ? 12 : 16,
+                      vertical: compact ? 6 : 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.4),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: Colors.amber.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Text('ДАВАЛГАА', style: TextStyle(color: Colors.grey[400], fontSize: compact ? 9 : 10)),
+                            Text('$wave', style: TextStyle(color: Colors.white, fontSize: compact ? 18 : 22, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        Container(width: 1, height: 32, color: Colors.amber.withValues(alpha: 0.3)),
+                        Column(
+                          children: [
+                            Text('ОНОО', style: TextStyle(color: Colors.grey[400], fontSize: compact ? 9 : 10)),
+                            Text('$score', style: TextStyle(color: Colors.amber, fontSize: compact ? 18 : 22, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: compact ? 20 : 24),
+                  _menuBtn(
+                    label: 'ҮРГЭЛЖЛҮҮЛЭХ',
+                    icon: Icons.play_arrow,
+                    color: Colors.amber,
+                    textColor: Colors.black,
+                    compact: compact,
+                    onTap: () => game.resumeGame(),
+                  ),
+                  SizedBox(height: compact ? 10 : 12),
+                  _menuBtn(
+                    label: 'ДАХИН ЭХЛЭХ',
+                    icon: Icons.refresh,
+                    color: Colors.transparent,
+                    textColor: Colors.white,
+                    borderColor: Colors.white38,
+                    compact: compact,
+                    onTap: () {
+                      game.resumeEngine();
+                      game.restartGame();
+                    },
+                  ),
+                  SizedBox(height: compact ? 10 : 12),
+                  _menuBtn(
+                    label: 'ГАРАХ',
+                    icon: Icons.exit_to_app,
+                    color: Colors.transparent,
+                    textColor: Colors.red[300]!,
+                    borderColor: Colors.red.withValues(alpha: 0.4),
+                    compact: compact,
+                    onTap: () {
+                      game.resumeEngine();
+                      onMainMenu?.call();
+                    },
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _menuBtn({
+    required String label,
+    required IconData icon,
+    required Color color,
+    required Color textColor,
+    Color? borderColor,
+    required bool compact,
+    required VoidCallback onTap,
+  }) {
+    return SizedBox(
+      width: double.infinity,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: compact ? 16 : 20,
+            vertical: compact ? 11 : 13,
+          ),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10),
+            border: borderColor != null
+                ? Border.all(color: borderColor, width: 1.5)
+                : null,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, color: textColor, size: compact ? 16 : 18),
+              SizedBox(width: compact ? 6 : 8),
+              Text(
+                label,
+                style: TextStyle(
+                  color: textColor,
+                  fontSize: compact ? 13 : 14,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

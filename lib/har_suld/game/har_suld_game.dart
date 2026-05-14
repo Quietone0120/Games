@@ -36,6 +36,7 @@ class HarSuldGame extends FlameGame
 
   // State
   bool isGameOver = false;
+  bool isPaused = false;
   int highestWave = 0;
   PositionComponent? selectedStructure;
 
@@ -43,6 +44,10 @@ class HarSuldGame extends FlameGame
   int score = 0;
   double _playSeconds = 0;
   void Function(int score, int waves, int playtime)? onGameOver;
+
+  /// Тоглогчийн бичсэн дуугаргах callback.
+  /// Lobby-оос тохируулна. [key] = HarSuldSoundKeys-ийн нэг.
+  void Function(String key)? onPlayCustomSound;
 
   // Build mode
   BuildType? _pendingBuildType;
@@ -100,7 +105,10 @@ class HarSuldGame extends FlameGame
   Future<void> _loadPlayer() async {
     player = Player();
     player.getEnemies = _getAliveEnemies;
-    player.onProjectileSpawned = (proj) => world.add(proj);
+    player.onProjectileSpawned = (proj) {
+      world.add(proj);
+      onPlayCustomSound?.call('arrow_shoot');
+    };
     player.onDeath = _onPlayerDeath;
     player.onMountHorse = _onPlayerMount;
     player.canMoveTo = _canPlayerMoveTo;
@@ -127,7 +135,12 @@ class HarSuldGame extends FlameGame
     waveSystem = WaveSystem();
     waveSystem.onEnemySpawn = (enemy) {
       enemy.onHarSuldAttack = (dmg) => harSuld.takeDamage(dmg);
-      enemy.onPlayerAttack = (dmg) => player.takeDamage(dmg);
+      enemy.onPlayerAttack = (dmg) {
+        player.takeDamage(dmg);
+        if (enemy is GreyWolf) {
+          onPlayCustomSound?.call('wolf_attack');
+        }
+      };
       enemy.onDefeated = (loot) {
         for (final entry in loot.entries) {
           inventory.add(entry.key, entry.value);
@@ -246,6 +259,7 @@ class HarSuldGame extends FlameGame
             inventory.add(entry.key, entry.value);
           }
           player.playUtilityAction();
+          onPlayCustomSound?.call('harvest_resource');
           _harvestCooldown = _harvestInterval;
           return;
         }
@@ -271,11 +285,13 @@ class HarSuldGame extends FlameGame
   void _onPlayerMount() {
     horse.position = player.position.clone();
     horse.setMoving(true);
+    onPlayCustomSound?.call('horse_mount');
   }
 
   void _triggerGameOver() {
     if (isGameOver) return;
     isGameOver = true;
+    onPlayCustomSound?.call('player_death');
     onGameOver?.call(score, waveSystem.currentWave, _playSeconds.toInt());
     overlays.add('GameOver');
   }
@@ -339,6 +355,7 @@ class HarSuldGame extends FlameGame
 
     _setFootprintOccupied(tx, ty, footprint.x, footprint.y, true);
     player.playUtilityAction(duration: 0.28);
+    onPlayCustomSound?.call('build_structure');
 
     if (build.isWall) {
       final tier = WallTier.values[_wallTierFromBuildType(build)];
@@ -542,7 +559,13 @@ class HarSuldGame extends FlameGame
 
     if (event is KeyDownEvent) {
       if (event.logicalKey == LogicalKeyboardKey.escape) {
-        setBuildType(null);
+        if (isPaused) {
+          resumeGame();
+        } else if (_pendingBuildType != null) {
+          setBuildType(null);
+        } else {
+          pauseGame();
+        }
       }
       if (event.logicalKey == LogicalKeyboardKey.keyR) {
         repairNearbyStructure();
@@ -565,14 +588,30 @@ class HarSuldGame extends FlameGame
     return KeyEventResult.handled;
   }
 
+  void pauseGame() {
+    if (isGameOver || isPaused) return;
+    isPaused = true;
+    pauseEngine();
+    overlays.add('PauseMenu');
+  }
+
+  void resumeGame() {
+    if (!isPaused) return;
+    isPaused = false;
+    resumeEngine();
+    overlays.remove('PauseMenu');
+  }
+
   void restartGame() {
     world.removeAll(world.children.toList());
     camera.viewport.removeAll(camera.viewport.children.toList());
     overlays.clear();
     isGameOver = false;
+    isPaused = false;
     selectedStructure = null;
     score = 0;
     _playSeconds = 0;
+    resumeEngine();
     onLoad();
   }
 
@@ -702,8 +741,8 @@ class HarSuldGame extends FlameGame
     if (!inventory.consumeConsumable(ConsumableType.playerHealthKit)) {
       return false;
     }
-
     player.heal(65);
+    onPlayCustomSound?.call('player_heal');
     return true;
   }
 

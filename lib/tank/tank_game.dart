@@ -5,6 +5,7 @@ import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../constants/score_service.dart';
 import '../constants/audio_service.dart';
 
@@ -47,6 +48,10 @@ class _MainMenuState extends State<TankMainMenu> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
     _initAudio();
 
     _titleCtrl = AnimationController(
@@ -86,6 +91,7 @@ class _MainMenuState extends State<TankMainMenu> with TickerProviderStateMixin {
 
   @override
   void dispose() {
+    SystemChrome.setPreferredOrientations(DeviceOrientation.values);
     _titleCtrl.dispose();
     _btnCtrl.dispose();
     _tankCtrl.dispose();
@@ -439,23 +445,29 @@ class _GamePlayPageState extends State<GamePlayPage> {
         children: [
           GameWidget(game: game),
           Positioned(
-            top: 20,
-            left: 20,
-            right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ValueListenableBuilder(
-                  valueListenable: GameProgress.playerLives,
-                  builder: (context, val, _) =>
-                      _statChip("LIVES: $val", Colors.green, Icons.favorite),
+            top: 0,
+            left: 0,
+            right: 0,
+            child: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ValueListenableBuilder(
+                      valueListenable: GameProgress.playerLives,
+                      builder: (context, val, _) =>
+                          _statChip("LIVES: $val", Colors.green, Icons.favorite),
+                    ),
+                    ValueListenableBuilder(
+                      valueListenable: GameProgress.enemiesLeft,
+                      builder: (context, val, _) =>
+                          _statChip("ENEMIES: $val", Colors.red, Icons.adb),
+                    ),
+                  ],
                 ),
-                ValueListenableBuilder(
-                  valueListenable: GameProgress.enemiesLeft,
-                  builder: (context, val, _) =>
-                      _statChip("ENEMIES: $val", Colors.red, Icons.adb),
-                ),
-              ],
+              ),
             ),
           ),
           _controls(game, context),
@@ -484,12 +496,18 @@ class _GamePlayPageState extends State<GamePlayPage> {
 
   Widget _controls(TankGame game, BuildContext context) {
     return Positioned(
-      bottom: 30,
-      left: 30,
-      right: 30,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [_joystick(game), _fireBtn(game, context)],
+      bottom: 0,
+      left: 0,
+      right: 0,
+      child: SafeArea(
+        top: false,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [_joystick(game), _fireBtn(game, context)],
+          ),
+        ),
       ),
     );
   }
@@ -576,13 +594,22 @@ class TankGame extends FlameGame with HasCollisionDetection {
   late PlayerTank player;
   int spawnedEnemies = 0;
   double spawnTimer = 0;
+  bool _initialized = false;
 
   @override
   Future<void> onLoad() async {
     add(ScreenHitbox());
-    _loadMap();
-    player = PlayerTank(position: Vector2(size.x / 2, size.y - 60));
-    add(player);
+  }
+
+  @override
+  void onGameResize(Vector2 size) {
+    super.onGameResize(size);
+    if (!_initialized && size.x > 0 && size.y > 0) {
+      _initialized = true;
+      _loadMap();
+      player = PlayerTank(position: Vector2(size.x / 2, size.y - 60));
+      add(player);
+    }
   }
 
   void _loadMap() {

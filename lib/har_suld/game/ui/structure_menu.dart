@@ -54,9 +54,9 @@ class _StructureMenuOverlayState extends State<StructureMenuOverlay> {
 
     return SafeArea(
       child: Align(
-        alignment: Alignment.centerRight,
+        alignment: Alignment.centerLeft,
         child: Padding(
-          padding: const EdgeInsets.only(right: 88, top: 24),
+          padding: const EdgeInsets.only(left: 8, top: 24),
           child: Container(
             width: 280,
             padding: const EdgeInsets.all(16),
